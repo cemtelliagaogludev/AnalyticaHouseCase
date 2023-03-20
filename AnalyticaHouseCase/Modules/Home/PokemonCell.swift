@@ -46,7 +46,6 @@ class PokemonCell: UITableViewCell{
             pokemonImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             pokemonImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             pokemonImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            pokemonImageView.heightAnchor.constraint(equalToConstant: 75),
             pokemonImageView.widthAnchor.constraint(equalToConstant: 75),
             pokemonNameLabel.leadingAnchor.constraint(equalTo: pokemonImageView.trailingAnchor, constant: 8),
             pokemonNameLabel.centerYAnchor.constraint(equalTo: pokemonImageView.centerYAnchor),

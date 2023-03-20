@@ -19,8 +19,10 @@ class HomePresenter: HomeViewToPresenter{
         view?.setupView()
         interactor?.loadPokemons()
     }
-    
-    
+    func didSelectRow(at index: Int) {
+        guard let pokemonViewModel = self.pokemonViewModels?[index] else{ return }
+        router?.routeToDetails(viewModel: pokemonViewModel)
+    }
 }
 
 //MARK: - InteractorToPresenter

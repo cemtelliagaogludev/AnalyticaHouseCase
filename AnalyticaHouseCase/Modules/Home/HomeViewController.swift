@@ -38,6 +38,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         cell.pokemonViewModel = viewModel
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectRow(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 //MARK: - PresenterToView
 extension HomeViewController: HomePresenterToView{
