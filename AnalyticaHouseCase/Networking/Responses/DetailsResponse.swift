@@ -8,7 +8,7 @@
 import Foundation
 
 public struct DetailsResponse: Codable{
-    let abilities: [Ability]
+    let abilities: [Abilities]
     let sprites: Sprite
 }
 public struct Sprite: Codable{
@@ -18,6 +18,9 @@ public struct Sprite: Codable{
         case frontDefault = "front_default"
     }
 }
+public struct Abilities: Codable{
+    let ability: Ability
+}
 public struct Ability: Codable{
-    let ability: [String: String]
+    let name: String
 }

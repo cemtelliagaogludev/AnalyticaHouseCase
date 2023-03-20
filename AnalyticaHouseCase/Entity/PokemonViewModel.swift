@@ -10,5 +10,5 @@ import Foundation
 struct PokemonViewModel{
     let name: String
     let imageURL: String
-    let abilities: [Ability]
+    let abilities: [Abilities]
 }
