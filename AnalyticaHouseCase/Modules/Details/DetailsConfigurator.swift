@@ -9,9 +9,7 @@ import UIKit
 
 class DetailsConfigurator{
     static func createModule() -> DetailsViewController{
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let viewController: DetailsViewController = storyboard.instantiateViewController(identifier: "DetailsViewController")
+        let viewController = DetailsViewController()
         let presenter = DetailsPresenter()
         let router = DetailsRouter()
         let interactor = DetailsInteractor()

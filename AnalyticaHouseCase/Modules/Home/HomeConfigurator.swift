@@ -10,9 +10,7 @@ import UIKit
 class HomeConfigurator{
     
     static func createModule() -> HomeViewController{
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let viewController: HomeViewController = storyboard.instantiateViewController(identifier: "HomeViewController")
+        let viewController = HomeViewController()
         let presenter = HomePresenter()
         let router = HomeRouter()
         let interactor = HomeInteractor()

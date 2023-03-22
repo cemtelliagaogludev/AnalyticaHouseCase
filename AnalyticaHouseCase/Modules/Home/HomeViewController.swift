@@ -11,13 +11,24 @@ class HomeViewController: UIViewController {
     //MARK: - Properties
     private let cellIdentifier = "pokemonCell"
     
-    @IBOutlet weak var tableView: UITableView!
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(PokemonCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.rowHeight = 100
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     var presenter: HomeViewToPresenter?
     
     var pokemonViewModels: [PokemonViewModel]?{
         didSet{
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     //MARK: - Lifecycle
@@ -47,17 +58,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
 extension HomeViewController: HomePresenterToView{
     
     func setupView() {
-        view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(PokemonCell.self, forCellReuseIdentifier: cellIdentifier)
+        view.backgroundColor = .white
+        
+        view.addSubview(tableView)
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+        ])
     }
     
     func displayViewModels(viewModels: [PokemonViewModel]) {
         self.pokemonViewModels = viewModels
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     func displayErrorMessage(_ errorMessage: String) {
