@@ -23,6 +23,12 @@ class HomePresenter: HomeViewToPresenter{
         guard let pokemonViewModel = self.pokemonViewModels?[index] else{ return }
         router?.routeToDetails(viewModel: pokemonViewModel)
     }
+    func getPokemon(at index: Int) -> PokemonViewModel? {
+        return pokemonViewModels?[index]
+    }
+    func getPokemonCount() -> Int? {
+        return pokemonViewModels?.count
+    }
 }
 
 //MARK: - InteractorToPresenter
@@ -46,7 +52,7 @@ extension HomePresenter: HomeInteractorToPresenter{
                     pokemonViewModels.append(viewModel)
                     
                 case .failure(let error):
-                    self.view?.displayErrorMessage(error.customMessage)
+                    self.router?.showAlert(error.customMessage)
                 }
                 group.leave()
             })
@@ -54,12 +60,11 @@ extension HomePresenter: HomeInteractorToPresenter{
         }
         group.notify(queue: .main){
             self.pokemonViewModels = pokemonViewModels
-            guard let viewModels = self.pokemonViewModels else{ return }
-            self.view?.displayViewModels(viewModels: viewModels)
+            self.view?.reloadData()
         }
     }
     
     func requestFailedWithError(errorMessage: String) {
-        view?.displayErrorMessage(errorMessage)
+        router?.showAlert(errorMessage)
     }
 }
