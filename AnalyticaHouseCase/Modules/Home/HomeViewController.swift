@@ -23,14 +23,7 @@ class HomeViewController: UIViewController {
     }()
     
     var presenter: HomeViewToPresenter?
-    
-    var pokemonViewModels: [PokemonViewModel]?{
-        didSet{
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +34,12 @@ class HomeViewController: UIViewController {
 //MARK: - TableView
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemonViewModels?.count ?? 0
+        return presenter?.getPokemonCount() ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? PokemonCell else{ return UITableViewCell()}
-        guard let viewModel = self.pokemonViewModels?[indexPath.row] else{ return cell }
-        cell.pokemonViewModel = viewModel
+        guard let pokemonModel = self.presenter?.getPokemon(at: indexPath.row) else{ return cell }
+        cell.pokemonViewModel = pokemonModel
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,7 +52,6 @@ extension HomeViewController: HomePresenterToView{
     
     func setupView() {
         view.backgroundColor = .white
-        
         view.addSubview(tableView)
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -69,16 +61,8 @@ extension HomeViewController: HomePresenterToView{
             tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
     }
-    
-    func displayViewModels(viewModels: [PokemonViewModel]) {
-        self.pokemonViewModels = viewModels
-    }
-    
-    func displayErrorMessage(_ errorMessage: String) {
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Close", style: .cancel))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
-        }
+
+    func reloadData() {
+        tableView.reloadData()
     }
 }
