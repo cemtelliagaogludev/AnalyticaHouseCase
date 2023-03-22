@@ -23,47 +23,27 @@ extension HTTPClient {
         responseModel: T.Type,
         completion: @escaping (Result<T,RequestError>) -> Void
     ) {
-        
         let urlComponents = prepareURLComponents(with: endpoint)
         
         guard let url = urlComponents.url else {
             return completion(.failure(.invalidURL))
         }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = endpoint.method.rawValue
-        request.allHTTPHeaderFields = endpoint.header
-        
-        if let body = endpoint.body {
-            request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-        }
-        
-        AF.request(url, method: .get).response { response in
-            do{
-                guard let data = response.data else { return }
-                guard let response = response.response else { return }
-                switch response.statusCode {
-                        case 200...299:
-                    let decodedResponse = try JSONDecoder().decode(responseModel, from: data)
-                            return completion(.success(decodedResponse))
-                        case 401:
-                            return completion(.failure(.unauthorized))
-                        default:
-                            return completion(.failure(.unexpectedStatusCode))
-                    }
-            }catch {
-                return completion(.failure(.decode))
-            }
-        }
+        processRequest(withURL: url, responseModel: responseModel, completion: completion)
     }
     
     func sendRequest<T: Decodable>(withURL url: URL,
                                    responseModel: T.Type,
                                    completion: @escaping (Result<T, RequestError>) -> Void){
+        processRequest(withURL: url, responseModel: responseModel, completion: completion)
+    }
+    
+    private func processRequest<T: Decodable>(withURL url: URL,
+                                            responseModel: T.Type,
+                                            completion: @escaping (Result<T, RequestError>) -> Void){
         AF.request(url, method: .get).response { response in
             do{
-                guard let data = response.data else{ return }
-                guard let response = response.response else{ return }
+                guard let data = response.data,
+                      let response = response.response else{ return }
                 switch response.statusCode{
                 case 200...299:
                     let decodedResponse = try JSONDecoder().decode(responseModel, from: data)
@@ -78,7 +58,7 @@ extension HTTPClient {
             }
         }
     }
-
+    
     private func prepareURLComponents(
         with endpoint: Endpoint
     ) -> URLComponents {
