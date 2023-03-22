@@ -1,0 +1,9 @@
+git_url("git@github.com:cemtelliagaoglu/FastLaneTrial.git")
+
+storage_mode("git")
+
+type("development")
+
+app_identifier(["com.analyticahousedev", "com.analyticahouseprod"])
+username("cem.telliagaoglu")
+team_id("ABCD7EFGHI")
