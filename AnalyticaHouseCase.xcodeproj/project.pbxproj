@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8419F2F529CAF6AD0039A3EC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8419F2F429CAF6AD0039A3EC /* Kingfisher */; };
-		84E41DE029CA4DC600C3BFC2 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E41DDF29CA4DC600C3BFC2 /* Launch.swift */; };
+		84E41DE029CA4DC600C3BFC2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E41DDF29CA4DC600C3BFC2 /* LaunchViewController.swift */; };
 		84E7806529C89794000C696A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7806429C89794000C696A /* AppDelegate.swift */; };
 		84E7806729C89794000C696A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7806629C89794000C696A /* SceneDelegate.swift */; };
 		84E7806929C89794000C696A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7806829C89794000C696A /* HomeViewController.swift */; };
@@ -32,7 +32,6 @@
 		84E7809D29C8B754000C696A /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7809C29C8B754000C696A /* PokemonViewModel.swift */; };
 		84E780A329C8EEEE000C696A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E780A229C8EEEE000C696A /* DetailsViewController.swift */; };
 		84E780A529C8EEFF000C696A /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E780A429C8EEFF000C696A /* DetailsPresenter.swift */; };
-		84E780A729C8EF07000C696A /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E780A629C8EF07000C696A /* DetailsInteractor.swift */; };
 		84E780A929C8EF11000C696A /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E780A829C8EF11000C696A /* DetailsRouter.swift */; };
 		84E780AB29C8EF1A000C696A /* DetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E780AA29C8EF1A000C696A /* DetailsProtocols.swift */; };
 		84E780AD29C8EF25000C696A /* DetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E780AC29C8EF25000C696A /* DetailsConfigurator.swift */; };
@@ -41,7 +40,7 @@
 /* Begin PBXFileReference section */
 		84E41DD529CA377E00C3BFC2 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		84E41DD629CA378C00C3BFC2 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
-		84E41DDF29CA4DC600C3BFC2 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		84E41DDF29CA4DC600C3BFC2 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		84E7806129C89794000C696A /* AnalyticaHouseCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyticaHouseCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E7806429C89794000C696A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84E7806629C89794000C696A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +65,6 @@
 		84E7809C29C8B754000C696A /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		84E780A229C8EEEE000C696A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		84E780A429C8EEFF000C696A /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
-		84E780A629C8EF07000C696A /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
 		84E780A829C8EF11000C696A /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		84E780AA29C8EF1A000C696A /* DetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsProtocols.swift; sourceTree = "<group>"; };
 		84E780AC29C8EF25000C696A /* DetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsConfigurator.swift; sourceTree = "<group>"; };
@@ -115,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				84E7806F29C89796000C696A /* LaunchScreen.storyboard */,
-				84E41DDF29CA4DC600C3BFC2 /* Launch.swift */,
+				84E41DDF29CA4DC600C3BFC2 /* LaunchViewController.swift */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -227,7 +225,6 @@
 				84E780AC29C8EF25000C696A /* DetailsConfigurator.swift */,
 				84E780AA29C8EF1A000C696A /* DetailsProtocols.swift */,
 				84E780A829C8EF11000C696A /* DetailsRouter.swift */,
-				84E780A629C8EF07000C696A /* DetailsInteractor.swift */,
 				84E780A429C8EEFF000C696A /* DetailsPresenter.swift */,
 				84E780A229C8EEEE000C696A /* DetailsViewController.swift */,
 			);
@@ -323,7 +320,7 @@
 				84E7808729C8A02D000C696A /* Endpoint.swift in Sources */,
 				84E7809D29C8B754000C696A /* PokemonViewModel.swift in Sources */,
 				84E780AD29C8EF25000C696A /* DetailsConfigurator.swift in Sources */,
-				84E41DE029CA4DC600C3BFC2 /* Launch.swift in Sources */,
+				84E41DE029CA4DC600C3BFC2 /* LaunchViewController.swift in Sources */,
 				84E780A529C8EEFF000C696A /* DetailsPresenter.swift in Sources */,
 				84E7808929C8A04A000C696A /* RequestMethod.swift in Sources */,
 				84E7808029C89843000C696A /* HomeProtocols.swift in Sources */,
@@ -331,7 +328,6 @@
 				84E780A929C8EF11000C696A /* DetailsRouter.swift in Sources */,
 				84E7809829C8AD12000C696A /* PokemonEndpoint.swift in Sources */,
 				84E7808529C89FBA000C696A /* HTTPClient.swift in Sources */,
-				84E780A729C8EF07000C696A /* DetailsInteractor.swift in Sources */,
 				84E7808B29C8A071000C696A /* RequestError.swift in Sources */,
 				84E7808229C8984C000C696A /* HomeConfigurator.swift in Sources */,
 				84E7807C29C8982F000C696A /* HomeInteractor.swift in Sources */,

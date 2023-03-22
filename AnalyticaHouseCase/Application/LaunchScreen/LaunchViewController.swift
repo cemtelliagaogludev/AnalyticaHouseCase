@@ -1,5 +1,5 @@
 //
-//  Launch.swift
+//  LaunchViewController.swift
 //  AnalyticaHouseCase
 //
 //  Created by admin on 21.03.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Launch: UIViewController{
+class LaunchViewController: UIViewController{
     //MARK: - Properties
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -16,6 +16,7 @@ class Launch: UIViewController{
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
