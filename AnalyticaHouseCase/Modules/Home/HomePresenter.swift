@@ -39,7 +39,7 @@ extension HomePresenter: HomeInteractorToPresenter{
                 
                 switch result{
                 case .success(let detailsResponse):
-                    let viewModel = PokemonViewModel(name: pokemon.name,
+                    let viewModel = PokemonViewModel(name: pokemon.name ?? "",
                                                      imageURL: detailsResponse.sprites.frontDefault,
                                                      abilities: detailsResponse.abilities)
                     

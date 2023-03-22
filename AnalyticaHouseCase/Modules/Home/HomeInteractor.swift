@@ -14,7 +14,8 @@ class HomeInteractor: HomePresenterToInteractor, HTTPClient{
     var presenter: HomeInteractorToPresenter?
     
     func loadDetails(for pokemon: Pokemon, completion: @escaping((Result<DetailsResponse, RequestError>)) -> ()) {
-        self.sendRequest(withURL: URL(string: pokemon.url)!, responseModel: DetailsResponse.self) { result in
+        guard let url = URL(string: pokemon.url ?? "") else{ return }
+        sendRequest(withURL: url, responseModel: DetailsResponse.self) { result in
             switch result{
             case .success(let detailsResponse):
                 completion(.success(detailsResponse))
@@ -28,8 +29,8 @@ class HomeInteractor: HomePresenterToInteractor, HTTPClient{
         sendRequest(endpoint: PokemonEndpoint.all, responseModel: PokemonResponse.self) { result in
             switch result{
             case .success(let pokemonsResponse):
-                self.pokemons = pokemonsResponse.results
-                guard let pokemons = self.pokemons else{ return }
+                guard let pokemons = pokemonsResponse.results else{ return }
+                self.pokemons = pokemons
                 self.presenter?.loadedPokemonsSuccessfully(pokemons: pokemons)
             case .failure(let error):
                 self.presenter?.requestFailedWithError(errorMessage: error.customMessage)
