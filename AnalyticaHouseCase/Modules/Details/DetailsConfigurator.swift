@@ -12,14 +12,11 @@ class DetailsConfigurator{
         let viewController = DetailsViewController()
         let presenter = DetailsPresenter()
         let router = DetailsRouter()
-        let interactor = DetailsInteractor()
         
         viewController.presenter = presenter
-        presenter.interactor = interactor
         presenter.view = viewController
         presenter.router = router
         router.viewController = viewController
-        interactor.presenter = presenter
         
         return viewController
     }

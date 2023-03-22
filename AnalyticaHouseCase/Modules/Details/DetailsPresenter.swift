@@ -8,17 +8,10 @@
 import Foundation
 
 class DetailsPresenter: DetailsViewToPresenter{
-    var interactor: DetailsPresenterToInteractor?
-    
     var router: DetailsPresenterToRouter?
-    
     var view: DetailsPresenterToView?
     
     func notifyViewDidLoad() {
         view?.setupView()
     }
-}
-
-extension DetailsPresenter: DetailsInteractorToPresenter{
-    
 }

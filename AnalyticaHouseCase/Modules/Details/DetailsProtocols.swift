@@ -8,20 +8,10 @@
 import Foundation
 
 protocol DetailsViewToPresenter{
-    var interactor: DetailsPresenterToInteractor? { get set }
     var router: DetailsPresenterToRouter?{ get set }
     var view: DetailsPresenterToView? { get set }
     
     func notifyViewDidLoad()
-}
-
-protocol DetailsPresenterToInteractor{
-    var presenter: DetailsInteractorToPresenter? { get set }
-    
-}
-
-protocol DetailsInteractorToPresenter{
-    
 }
 
 protocol DetailsPresenterToView{
@@ -30,5 +20,4 @@ protocol DetailsPresenterToView{
 
 protocol DetailsPresenterToRouter{
     var viewController: DetailsViewController?{ get set }
-    
 }
