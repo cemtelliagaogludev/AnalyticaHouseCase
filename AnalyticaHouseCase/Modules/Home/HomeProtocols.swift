@@ -13,6 +13,8 @@ protocol HomeViewToPresenter{
     var view: HomePresenterToView? { get set }
     
     func notifyViewDidLoad()
+    func getPokemon(at index: Int) -> PokemonViewModel?
+    func getPokemonCount() -> Int?
     func didSelectRow(at index: Int)
 }
 
@@ -30,11 +32,11 @@ protocol HomeInteractorToPresenter{
 
 protocol HomePresenterToView{
     func setupView()
-    func displayViewModels(viewModels: [PokemonViewModel])
-    func displayErrorMessage(_ errorMessage: String)
+    func reloadData()
 }
 
 protocol HomePresenterToRouter{
     var viewController: HomeViewController?{ get set }
     func routeToDetails(viewModel: PokemonViewModel)
+    func showAlert(_ errorMessage: String)
 }
