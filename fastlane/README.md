@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Sign Code
 
+### ios increment_version
+
+```sh
+[bundle exec] fastlane ios increment_version
+```
+
+
+
 ### ios build_test
 
 ```sh
@@ -38,22 +46,6 @@ Sign Code
 ```
 
 
-
-### ios increment_version
-
-```sh
-[bundle exec] fastlane ios increment_version
-```
-
-
-
-### ios build
-
-```sh
-[bundle exec] fastlane ios build
-```
-
-Description of what the lane does
 
 ----
 
